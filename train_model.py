@@ -10,7 +10,7 @@ questions = ['如果我們的爭論惡化，只要其中一人道歉，爭論就
 df.columns = questions + ["Class"]
 
 X = df.drop("Class", axis=1)
-y = df["Class"]
+y = df["Class"].apply(lambda x: 1 - x)  # ← 重點：反轉標籤方向
 
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
